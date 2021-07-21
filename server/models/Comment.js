@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const commentSchema = new Schema(
     {
@@ -13,7 +13,7 @@ const commentSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date, now
+            default: Date.now
         }
     },
     {
