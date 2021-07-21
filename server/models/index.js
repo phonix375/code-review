@@ -1,4 +1,5 @@
 //import models
+const Project = require('./Project');
 
 
-module.exports = { models };
+module.exports = { Project };
