@@ -35,12 +35,11 @@ const resolvers = {
       return { user };
     },
     addSkill: async(parent, args) => {
-    const skill = await User.create(args);
+    const skill = await Skill.create(args);
     
         return skill;
       }
     },
   };
-
-
+  
 module.exports = resolvers;
