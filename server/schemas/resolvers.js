@@ -1,4 +1,4 @@
-const { User, Skill } = require('../models');
+const { User, Skill, Project, Chat } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
@@ -14,6 +14,11 @@ const resolvers = {
         skills: async () => {
             return Skill.find();
         },
+        getProjects: async (parent, args, context) => {
+            const projects = await Project.find({}).select('-__v').populate('comments');
+
+            return projects;
+        }
     },
     Mutation: {
         addUser: async (parant, args) => {
