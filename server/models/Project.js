@@ -14,7 +14,7 @@ const projectSchema = new Schema(
             required: true
         },
         price: {
-            type: Int,
+            type: Number,
             required: true
         },
         deployed_link: {
