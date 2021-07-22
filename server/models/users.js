@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Skills = require('./skills') 
+const Skill = require('./Skill') 
 
 
 const userSchema = new Schema(
@@ -22,7 +22,8 @@ const userSchema = new Schema(
             minlength: 5
           },
           badges:{
-            type:[Skills]
+            type:Schema.Types.ObjectId,
+            ref: 'Skill'
           }
     },
     {

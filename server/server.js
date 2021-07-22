@@ -1,6 +1,8 @@
 const express = require('express');
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+//import auth middleware
+const path = require('path');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -11,7 +13,7 @@ const app = express();
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
 // integrate our Apollo server with the Express application as middleware
@@ -19,6 +21,15 @@ server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//serve up static assets
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,'../client/build')));
+}
+
+app.get('*',(req,res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+})
 
 db.once('open', () => {
   app.listen(PORT, () => {
