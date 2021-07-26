@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:3001",
   "name": "code-review",
   "version": "1.0.0",
   "description": "",
