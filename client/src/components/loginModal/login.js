@@ -1,12 +1,15 @@
-// import React from 'react';
-// import {Navbar,Container,Nav} from 'react-bootstrap';
+import React from 'react';
 
-// function LoginModal() {
-//     return (
-//         <Container>
-           
-//         </Container>
-//     )
-// }
+class LoginModal extends React.Component {
+    render() {
+        return (
+            <div className="loginModal">
+                
+            </div>
+        );
+    }
+}
 
-// export default LoginModal;
+
+
+export default LoginModal;

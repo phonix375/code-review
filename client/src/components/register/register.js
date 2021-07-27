@@ -1,12 +1,15 @@
 import React from 'react';
-import {Navbar,Container,Nav} from 'react-bootstrap';
 
-function Register() {
-    return (
-        <Container>
-           
-        </Container>
-    )
+class RegisterModal extends React.Component {
+    render() {
+        return (
+            <div className="registerModal">
+                
+            </div>
+        );
+    }
 }
 
-export default Register;
+
+
+export default RegisterModal;
