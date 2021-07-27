@@ -27,6 +27,12 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addSkillToUser: async (parant, {skill} ,context) => {
+        const skill = Skill.findOne({skill});
+        await User.findByIdAndUpdate(context.user._id, { $push: { skills: skill._id } });
+
+        return skill;
+    },
     login: async (parent, { email,password }) => {
       const user= await User.findOne({ email });
 
