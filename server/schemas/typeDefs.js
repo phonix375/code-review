@@ -23,9 +23,13 @@ type Skill {
   }
   
   type Mutation {
-    login(email: String!, password: String!): User
-    addUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     addSkill(name: String!): Skill
+  }
+  type Auth {
+    token: ID!
+    user: User
   }
   `;
 
