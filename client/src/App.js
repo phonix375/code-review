@@ -1,7 +1,9 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+
+import Container from 'react-bootstrap/Container'
+import { Row, Column } from 'react-bootstrap';
 import Footer from "./components/footer/footer";
 import Navigation from "./components/navBar/navBar";
 
@@ -14,9 +16,11 @@ import RegisterModal from "./components/register/register";
 class App extends React.Component {
     render() {
         return (
-            <div className="">
-                <Navigation></Navigation>
-            </div>
+            <Container>
+                <Row>
+                    <Navigation></Navigation>
+                </Row>
+            </Container>
         );
     }
 }
