@@ -1,12 +1,12 @@
-import React from 'react';
-import {Navbar,Container,Nav} from 'react-bootstrap';
+// import React from 'react';
+// import {Navbar,Container,Nav} from 'react-bootstrap';
 
-function LoginModal() {
-    return (
-        <Container>
+// function LoginModal() {
+//     return (
+//         <Container>
            
-        </Container>
-    )
-}
+//         </Container>
+//     )
+// }
 
-export default LoginModal;
+// export default LoginModal;
