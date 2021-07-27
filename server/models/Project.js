@@ -10,7 +10,7 @@ const projectSchema = new Schema(
             max: [30, 'Project name is too long']
         },
         username: {
-            type: Schema.Types.ObjectId,
+            type: String,
             required: true
         },
         price: {
@@ -30,7 +30,7 @@ const projectSchema = new Schema(
             min: [4, 'Please write a brief description about your project']
         },
         deadline: {
-            type: Date
+            type: String
         },
         comments: {
             type: [commentSchema]

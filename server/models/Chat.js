@@ -30,6 +30,14 @@ const messageSchema = new Schema(
 const chatSchema = new Schema(
     {
         // add fields for chat schema here
+        project: {
+            type: Schema.Types.ObjectId
+        },
+        users: {
+            type: [Schema.Types.ObjectId],
+            required: true
+        },
+        messages: [messageSchema]
     },
     {
         toJSON: {
