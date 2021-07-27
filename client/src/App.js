@@ -17,9 +17,10 @@ class App extends React.Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Navigation></Navigation>
-                </Row>
+                <Navigation></Navigation>
+                <ProjectBoard></ProjectBoard>
+                <Welcome></Welcome>
+                <Footer></Footer>
             </Container>
         );
     }

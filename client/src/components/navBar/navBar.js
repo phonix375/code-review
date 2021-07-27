@@ -6,7 +6,7 @@ class Navigation extends React.Component {
     render() {
         return (
 
-            <div className="">
+            <div className="header">
                 <Nav className="navbar navbar-light navbar-expand-md sticky-top bg-white" style={{
                     color: "rgb(33, 37, 41)",
                     background: "linear-gradient(90deg, #c3e7ff 12%, #003f54 100%)",
