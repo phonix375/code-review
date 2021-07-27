@@ -28,6 +28,24 @@ const userSchema = new Schema(
             type:Schema.Types.ObjectId,
             ref: 'Skill'
           }],
+          rating:{
+            type:Number,
+            required: false,
+            unique: false,
+            default: 0
+          },
+          numberOfRates:{
+            type:Number,
+            required: false,
+            unique: false,
+            default: 0
+          },
+          balance:{
+            type:Number,
+            required: false,
+            unique: false,
+            default: 0
+          }
     },
 
 );

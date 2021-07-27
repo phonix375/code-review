@@ -22,16 +22,18 @@ const resolvers = {
     },
   },
   Mutation:{
-    addUser: async (parant, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
-      return { token, user };
+    addUser: async (parant, args, context) => {
+
+        const user = await User.create(args);
+        const token = signToken(user);
+        return { token, user };
+
     },
     addSkillToUser: async (parant, {skill} ,context) => {
-        const skill = Skill.findOne({skill});
-        await User.findByIdAndUpdate(context.user._id, { $push: { skills: skill._id } });
+        const skilltemp = Skill.findOne({skill});
+        await User.findByIdAndUpdate(context.user._id, { $push: { skills: skilltemp._id } });
 
-        return skill;
+        return skilltemp;
     },
     login: async (parent, { email,password }) => {
       const user= await User.findOne({ email });
@@ -53,8 +55,22 @@ const resolvers = {
     const skill = await Skill.create(args);
     
         return skill;
-      }
+      
     },
+    updateRating: async(parent, {username, rating}, context) => {
+
+ 
+        const rateUser = await User.findOne({username : username});
+        const newRate =  (rating + rateUser.rating) / (rateUser.numberOfRates + 1 );
+        const numberOfRates = rateUser.numberOfRates + 1 ;
+        const updatedUser = await User.findOneAndUpdate(
+          {_id : rateUser._id},
+          {"$set" : {rating: newRate,numberOfRates: numberOfRates}},
+          {new: true},
+        )
+        return updatedUser;
+    }
+  }
   };
   
 module.exports = resolvers;
