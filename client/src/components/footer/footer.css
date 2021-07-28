@@ -1,9 +1,13 @@
+.page-footer {
+  padding-top: 15px !important; 
+}
 .footer {
-    position: fixed !important;
+    
     bottom: 0px !important;
     margin-bottom: 0px !important;
     width: 100% !important;
     margin-left: 0px !important;
+    padding-left: 0px !important;
 }
 .links {
     padding: 10px;

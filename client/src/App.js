@@ -8,7 +8,7 @@ import ApolloClient from 'apollo-boost';
 
 
 import Container from 'react-bootstrap/Container'
-import { Row, Column } from 'react-bootstrap';
+
 import Footer from "./components/footer/footer";
 import Navigation from "./components/navBar/navBar";
 
@@ -54,14 +54,15 @@ function App() {
         <Container className="container1">
           <video autoPlay loop muted 
           style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            top: "50%",
-            left: "50%",
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            top: "0",
+            left: "0",
             objectFit: "cover",
-            transform: "translate(-50%, -50%)",
-            zIndex: "-1"
+            // transform: "translate(-50%, -50%)",
+            zIndex: "-1",
+            backgroundRepeat: "repeat-y"
           }}>
             <source src={backgroundvid} type="video/mp4"/>
           </video>
