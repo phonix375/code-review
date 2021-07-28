@@ -64,3 +64,8 @@
     transform: rotate(360deg);
   }
 }
+.container1 {
+  max-width: 100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
