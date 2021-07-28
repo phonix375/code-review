@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { REGISTER_TAGGLE, LOGGIN_TAGGLE } from "../../utils/actions";
+import { useStoreContext } from "../../utils/GlobalState";
 
-class Navigation extends React.Component {
-    render() {
+
+
+function Navigation () {
+    const [state, dispatch] = useStoreContext();
+    console.log(state);
         return (
-
             <div className="header">
                 <Nav className="navbar navbar-light navbar-expand-md sticky-top bg-white" style={{
                     color: "rgb(33, 37, 41)",
@@ -18,7 +22,8 @@ class Navigation extends React.Component {
                         fontWeight: "bold",
                         fontSize: "30px",
                         color: "rgb(0,63,84)"
-                        }}>Code Reviews.</a><button data-bs-toggle="collapse" className="navbar-toggler" data-bs-target="#navcol-1"><span className="visually-hidden">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+                        }}>
+                            {`<!STUCK>`}</a><button data-bs-toggle="collapse" className="navbar-toggler" data-bs-target="#navcol-1"><span className="visually-hidden">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
                         <div className="collapse navbar-collapse d-flex justify-content-end" id="navcol-1">
                             <ul className="navbar-nav">
                                 <li className="nav-item"></li>
@@ -30,7 +35,7 @@ class Navigation extends React.Component {
                                 <li className="nav-item"><a className="nav-link active" href="#"></a></li>
                             </ul>
 
-                            <button className="btn btn-outline-primary" type="button" onClick={this.props.loginOnClick} style={{
+                            <button className="btn btn-outline-primary" type="button" style={{
                                 background: "rgba(255,255,255,0)"
                                 }}>Log In</button>
                             
@@ -39,9 +44,8 @@ class Navigation extends React.Component {
                     </div>
                 </Nav>
             </div>
-        );
-    }
-}
+        )
+};
 
 export default Navigation;
 
