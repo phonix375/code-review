@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import "./projectBoard.css";
 class ProjectBoard extends React.Component {
     render() {
         return (
