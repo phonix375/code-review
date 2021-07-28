@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
+
 class Navigation extends React.Component {
     render() {
         return (
@@ -34,7 +35,7 @@ class Navigation extends React.Component {
                                 background: "rgba(255,255,255,0)"
                                 }}>Log In</button>
                             
-                            <button className="btn btn-primary d-flex" type="button" data-bs-toggle="modal" data-bs-target="#signin">Sign Up</button>
+                            <button className="btn btn-primary d-flex" type="button" onClick={this.props.signUpOnClick}>Sign Up</button>
                         </div>
                     </div>
                 </Nav>

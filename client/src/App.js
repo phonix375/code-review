@@ -16,6 +16,7 @@ import {useState} from "react";
 
 
 
+
 function App() {
 
     const [show, setShow] = useState(false);
@@ -25,16 +26,16 @@ function App() {
 
   const [show2, setShow2] = useState(false);
 
-  const handleClose2 = () => setShow(false);
-  const handleShow2 = () => setShow(true);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
 
    
         return (
             <Container>
-                <Navigation loginOnClick={handleShow} signUpOnClick={handleClose2}></Navigation>
+                <Navigation loginOnClick={handleShow} signUpOnClick={handleShow2}></Navigation>
                 {show && <LoginModal closeModal={handleClose}></LoginModal>}
-                {show && <RegisterModal closeModal2={handleClose2}></RegisterModal>}
+                {show2 && <RegisterModal closeModal2={handleClose2}></RegisterModal>}
                 <ProjectBoard></ProjectBoard>
                 <Welcome></Welcome>
                 <Footer></Footer>

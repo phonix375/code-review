@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import "./register.css"
+import "./register.css";
+
 
 class RegisterModal extends React.Component {
     render() {
@@ -8,7 +9,7 @@ class RegisterModal extends React.Component {
             <div className="registerModal">
                 <div className="modal-content">
                     <div className="modal-header" style={{ background: "#c3e7ff" }}>
-                        <h4 style={{ color: "#003f54" }}>Create Account</h4><button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4 style={{ color: "#003f54" }}>Create Account</h4><button type="button" className="btn-close" onClick={this.props.closeModal2} aria-label="Close"></button>
                     </div>
                     <div className="modal-body" style={{ background: "#edf6ff" }}>
                         <form className="mt-4">
