@@ -13,7 +13,7 @@ import Welcome from "./components/welcome/welcome";
 import LoginModal from "./components/loginModal/login";
 import RegisterModal from "./components/register/register";
 import {useState} from "react";
-
+import backgroundvid from "./assets/backgroundLoop.mp4";
 
 
 
@@ -32,7 +32,20 @@ function App() {
 
    
         return (
-            <Container>
+            <Container className="container1">
+                <video autoPlay loop muted
+                style={{
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    top: "50%",
+                    left: "50%",
+                    objectFit: "cover",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: "-1"
+                }}>
+                    <source src={backgroundvid} type="video/mp4"/>
+                </video>
                 <Navigation loginOnClick={handleShow} signUpOnClick={handleShow2}></Navigation>
                 {show && <LoginModal closeModal={handleClose}></LoginModal>}
                 {show2 && <RegisterModal closeModal2={handleClose2}></RegisterModal>}

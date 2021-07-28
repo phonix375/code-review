@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import "./navBar.scss";
 
 
 class Navigation extends React.Component {
@@ -13,6 +14,7 @@ class Navigation extends React.Component {
                     background: "linear-gradient(90deg, #c3e7ff 12%, #003f54 100%)",
                     opacity: "0.95",
                     height: "95px",
+                    width: "100% !important",
                     marginBottom: "95px"
                     }}>
                     <div className="container-fluid"><a className="navbar-brand" href="#" style={{
