@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from "styled-components";
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { FaBorderNone } from "react-icons/fa";
+import { AiFillTwitterCircle, AiFillInstagram, AiFillGithub } from "react-icons/ai";
 import "./footer.css"
 
 
@@ -22,21 +22,14 @@ class Footer extends React.Component {
                             }}><a href="#"
                                 style={{
                                     color: "rgb(195,231,255)"
-                                }}>About Us</a><a href="#" style={{color: "#c3e7ff"}}>Contact us</a><a href="#" style={{
+                                }}>About Us</a><a href="#" style={{ color: "#c3e7ff" }}>Contact us</a><a href="#" style={{
                                     color: "#c3e7ff",
                                     borderColor: "#c3e7ff"
-                                    }}>Terms and Service</a></div>
-                        <div className="social-icons"><a href="#" style={{
-                            borderWidth: "2px",
-                            color: "rgb(255,255,255)"
-                            }}><i className="icon ion-social-facebook"></i></a><a href="#" style={{
-                                borderWidth: "2px",
-                                borderColor: "rgb(255,255,255)"
-                                }}><i className="icon ion-social-instagram-outline"></i></a><a href="#" style={{
-                                    color: "rgb(255,255,255)", 
-                                    borderWidth: "2px"
-                                    }}><i className="icon ion-social-twitter" style={{
-                                        color: "#ffffff"}}></i></a></div>
+                                }}>Terms and Service</a></div>
+                        <div className="social-icons" >
+                            <a className="icon" href="#" ><AiFillGithub /></a>
+                            <a className="icon" href="#" >< AiFillInstagram /></a>
+                            <a className="icon" href="#" ><AiFillTwitterCircle /></a></div>
                     </div>
                 </footer>
 

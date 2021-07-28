@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+
+import {IoMdClose} from "react-icons/io"
 import "./register.css";
 
 
@@ -9,7 +10,7 @@ class RegisterModal extends React.Component {
             <div className="registerModal">
                 <div className="modal-content">
                     <div className="modal-header" style={{ background: "#c3e7ff" }}>
-                        <h4 style={{ color: "#003f54" }}>Create Account</h4><button type="button" className="btn-close" onClick={this.props.closeModal2} aria-label="Close"></button>
+                        <h4 style={{ color: "#003f54" }}>Create Account</h4><button type="button" className="btn-close" onClick={this.props.closeModal2} aria-label="Close"><IoMdClose /></button>
                     </div>
                     <div className="modal-body" style={{ background: "#edf6ff" }}>
                         <form className="mt-4">
