@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
+
 class Footer extends React.Component {
     render() {
         return (

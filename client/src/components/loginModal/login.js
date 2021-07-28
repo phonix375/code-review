@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import "./login.css"
+import "./login.css";
+
 
 class LoginModal extends React.Component {
 
