@@ -11,7 +11,7 @@ class Footer extends React.Component {
                 <footer className="page-footer"
                     style={{
                         color: "rgb(255, 255, 255)", background: "#003f54",
-                        padding: "20px 0px 5px",
+                        padding: "20px 0px 0px",
                         borderStyle: "none",
                         borderColor: "rgb(255,255,255)"
                     }}>
