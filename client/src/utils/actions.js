@@ -1,0 +1,2 @@
+export const LOGGIN_TAGGLE = "LOGGIN_TAGGLE";
+export const REGISTER_TAGGLE = "LOGGIN_TAGGLE";
