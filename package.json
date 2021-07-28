@@ -1,10 +1,12 @@
 {
+  "proxy": "http://localhost:3001",
   "name": "code-review",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "PORT=4001 react-scripts start",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",

@@ -1,24 +1,39 @@
 const { User, Skill, Project, Chat } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
+
+
 
 const resolvers = {
-    Query: {
-        users: async () => {
-            return User.find()
-                .select('-__v -password')
-        },
-        user: async (parent, { username }) => {
-            return User.findOne({ username })
-                .select('-__v -password')
-        },
-        skills: async () => {
-            return Skill.find();
-        },
-        getProjects: async (parent, args, context) => {
-            const projects = await Project.find({}).select('-__v').populate('comments');
-
-            return projects;
+  Query: {
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+    },
+    user: async (parent, args , context) => {
+        if(context.user){
+            const user = await User.findById(context.user._id)
+            return user
         }
+    throw new AuthenticationError('Not logged in');
+    },
+    skills: async () => {
+      return Skill.find();
+    },
+  },
+  Mutation:{
+    addUser: async (parant, args, context) => {
+
+        const user = await User.create(args);
+        const token = signToken(user);
+        return { token, user };
+
+    },
+    addSkillToUser: async (parant, {skill} ,context) => {
+        const skilltemp = Skill.findOne({skill});
+        await User.findByIdAndUpdate(context.user._id, { $push: { skills: skilltemp._id } });
+
+        return skilltemp;
     },
     Mutation: {
         addUser: async (parant, args) => {
@@ -37,14 +52,31 @@ const resolvers = {
                 throw new AuthenticationError('Incirrecr Credentuals');
             }
 
-            return { user };
-        },
-        addSkill: async (parent, args) => {
-            const skill = await Skill.create(args);
+      const token = signToken(user);
 
-            return skill;
-        }
+      return {token, user };
     },
-};
+    addSkill: async(parent, args) => {
+    const skill = await Skill.create(args);
+    
+        return skill;
+      
+    },
+    updateRating: async(parent, {username, rating}, context) => {
 
+ 
+        const rateUser = await User.findOne({username : username});
+        const newRate =  (rating + rateUser.rating) / (rateUser.numberOfRates + 1 );
+        const numberOfRates = rateUser.numberOfRates + 1 ;
+        const updatedUser = await User.findOneAndUpdate(
+          {_id : rateUser._id},
+          {"$set" : {rating: newRate,numberOfRates: numberOfRates}},
+          {new: true},
+        )
+        return updatedUser;
+        }
+    }
+  }
+  };
+  
 module.exports = resolvers;
