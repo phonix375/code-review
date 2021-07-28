@@ -1,12 +1,12 @@
 
 import {Container} from 'react-bootstrap';
 import React from 'react';
-
+import "./welcome.css"
 
 class Welcome extends React.Component {
     render() {
         return (
-            <Container>
+            <Container className="container2">
                 <section className="features-blue" style={{
                     padding: "5px 5px 5px",
                     background: "rgb(0,63,84)",

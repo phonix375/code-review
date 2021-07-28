@@ -21,6 +21,11 @@ import { useState } from "react";
 import { StoreProvider } from "./utils/GlobalState";
 import backgroundvid from "./assets/backgroundLoop.mp4";
 
+//react icons stuff
+//end of react icons tuff 
+
+
+
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
