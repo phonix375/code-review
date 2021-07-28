@@ -12,18 +12,35 @@ import React from "react";
 import Welcome from "./components/welcome/welcome";
 import LoginModal from "./components/loginModal/login";
 import RegisterModal from "./components/register/register";
+import {useState} from "react";
 
-class App extends React.Component {
-    render() {
+
+
+function App() {
+
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow(false);
+  const handleShow2 = () => setShow(true);
+
+
+   
         return (
             <Container>
-                <Navigation></Navigation>
+                <Navigation loginOnClick={handleShow} signUpOnClick={handleClose2}></Navigation>
+                {show && <LoginModal closeModal={handleClose}></LoginModal>}
+                {show && <RegisterModal closeModal2={handleClose2}></RegisterModal>}
                 <ProjectBoard></ProjectBoard>
                 <Welcome></Welcome>
                 <Footer></Footer>
             </Container>
         );
     }
-}
+
 
 export default App;

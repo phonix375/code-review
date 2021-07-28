@@ -30,7 +30,7 @@ class Navigation extends React.Component {
                                 <li className="nav-item"><a className="nav-link active" href="#"></a></li>
                             </ul>
 
-                            <button className="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#signup" style={{
+                            <button className="btn btn-outline-primary" type="button" onClick={this.props.loginOnClick} style={{
                                 background: "rgba(255,255,255,0)"
                                 }}>Log In</button>
                             
