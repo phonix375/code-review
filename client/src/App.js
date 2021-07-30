@@ -6,17 +6,11 @@ import ApolloClient from "apollo-boost";
 
 import Container from "react-bootstrap/Container";
 
-import Footer from "./components/footer/footer";
 import Navigation from "./components/navBar/navBar";
-
-import ProjectBoard from "./components/projectBoard/projectBoard";
 import React from "react";
-import Welcome from "./components/welcome/welcome";
-import LoginModal from "./components/loginModal/login";
-import RegisterModal from "./components/register/register";
-import Personal from "./components/personal/personal";
-import { useState } from "react";
 import { StoreProvider } from "./utils/GlobalState";
+import Home from "./pages/home";
+
 import backgroundvid from "./assets/backgroundLoop.mp4";
 
 //react icons stuff
@@ -35,16 +29,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [show2, setShow2] = useState(false);
-
-  const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -68,18 +52,10 @@ function App() {
             <source src={backgroundvid} type="video/mp4" />
           </video>
           <StoreProvider>
-            <Navigation
-              loginOnClick={handleShow}
-              signUpOnClick={handleShow2}
-            ></Navigation>
-            {show && <LoginModal closeModal={handleClose}></LoginModal>}
-            {show2 && (
-              <RegisterModal closeModal2={handleClose2}></RegisterModal>
-            )}
-            <ProjectBoard></ProjectBoard>
-            <Welcome></Welcome>
-            <Personal></Personal>
-            <Footer></Footer>
+            <Navigation></Navigation>
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
           </StoreProvider>
         </Container>
       </Router>
