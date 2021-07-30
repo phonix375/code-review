@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import {
     LOGGIN_TAGGLE,
     REGISTER_TAGGLE,
+    NEW_PROJECT_TAGGLE
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -17,6 +18,11 @@ export const reducer = (state, action) => {
         ...state,
         registerOpen: !state.registerOpen
       };
+    case NEW_PROJECT_TAGGLE:
+      return{
+        ...state,
+        createProject: !state.createProject
+      }
 
     default:
       return state;

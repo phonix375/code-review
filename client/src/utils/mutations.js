@@ -30,3 +30,33 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const CREATE_NEW_PROJECT = gql`
+mutation addProject(
+  $project_name: String!
+  $user_id: String!
+  $price: Float!
+  $deployed_link: String
+  $repository_link: String
+  $description: String
+  $deadline:String
+  ){
+  addProject(
+    project_name: $project_name
+    user_id: $user_id
+    price: $price
+    deployed_link: $deployed_link
+    repository_link: $repository_link
+    description: $description
+    deadline:$deadline){
+		_id
+    project_name
+    user_id
+    price
+    deployed_link
+    repository_link
+    description
+    deadline
+  }
+}
+`

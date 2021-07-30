@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { REGISTER_TAGGLE, LOGGIN_TAGGLE } from "../../utils/actions";
+import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./navBar.css";
 import Auth from "../../utils/auth";
@@ -10,6 +10,7 @@ import Auth from "../../utils/auth";
 
 import LoginModal from '../loginModal/login';
 import RegisterModal from '../register/register';
+import NewProjectModal from '../createProject'
 
 
 function Navigation (props) {
@@ -27,6 +28,10 @@ function Navigation (props) {
         }
         dispatch({ type: REGISTER_TAGGLE });
     };
+
+    function newProjectTaggel(){
+        dispatch({ type: NEW_PROJECT_TAGGLE });
+    }
 
         return (
             <div className="header">
@@ -59,11 +64,15 @@ function Navigation (props) {
                             <Nav.Item>
                             <button className="btn btn-outline-primary" type="button" onClick={() => Auth.logout()} style={{ background: "rgba(255,255,255,0)"}} >Log Out</button>
                             </Nav.Item>
+                            <Nav.Item>
+                            <button className="btn btn-outline-primary" type="button" onClick={newProjectTaggel} style={{ background: "rgba(255,255,255,0)"}} >Create Project</button>
+                            </Nav.Item>
                         </div>}
                     </div>
                 </Nav>
                 {state.logginOpen && <LoginModal closeModal={loginClickHandel} ></LoginModal>}
                 {state.registerOpen && <RegisterModal closeModal2={signUpClickHandel}></RegisterModal>}
+                {state.createProject && <NewProjectModal closeModal2={signUpClickHandel}></NewProjectModal>}
             </div>
         )
 };
