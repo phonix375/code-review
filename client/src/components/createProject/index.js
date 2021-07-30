@@ -18,12 +18,22 @@ function NewProjectModal(){
 
 
     const handelNewProjectSubmit = async event => {
-        event.preventDefault();
-        try {
-            console.log('you trying to sumbit a bew project');
-        } catch (e) {
-          console.log(e)
-        }
+      event.preventDefault();
+      try {
+        const mutationResponse = await newProject({ variables: {
+           project_name: formState.project_name,
+           repository_link: formState.repository_link,
+           price : parseFloat(formState.price),
+           description: formState.description,
+           deployed_link: formState.deployed_link,
+           deadline: formState.deadline,
+           user_id: Auth.getProfile().data._id
+          } })
+        const data = mutationResponse.data;
+        console.log(data);
+      } catch (e) {
+        console.log(e)
+      }
       };
 
       
@@ -98,7 +108,7 @@ function NewProjectModal(){
                             <Form.Group className="form-group mb-3">
                             <Form.Label>Deadline :</Form.Label>
                             <Form.Control className="form-control" 
-                                                type="text"
+                                                type="date"
                                                 placeholder="Deadline" 
                                                 name="deadline"
                                                 id="deadline"
