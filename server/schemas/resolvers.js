@@ -1,4 +1,4 @@
-const { User, Skill, Project, Chat } = require('../models');
+const { User, Skill } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -19,19 +19,14 @@ const resolvers = {
     },
     skills: async () => {
       return Skill.find();
-    }
+    },
   },
   Mutation:{
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-      console.log(user)
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    addUser: async (parant, args, context) => {
 
-
-      const token = signToken(user);
-
-      return { token, user };
+        const user = await User.create(args);
+        const token = signToken(user);
+        return { token, user };
 
     },
     addSkillToUser: async (parant, {skill} ,context) => {
@@ -40,21 +35,17 @@ const resolvers = {
 
         return skilltemp;
     },
-    addUser: async (parant, args) => {
-            const user = await User.create(args);
-            return user;
-    },
-    login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+    login: async (parent, { email,password }) => {
+      const user= await User.findOne({ email });
 
-            if (!user) {
-                throw new AuthenticationError('Incorrect credentials')
-            }
-            const correctPw = await user.isCorrectPassword(password);
+      if(!user){
+        throw new AuthenticationError('Incorrect credentials')
+      }
+      const correctPw = await user.isCorrectPassword(password);
 
-            if (!correctPw) {
-                throw new AuthenticationError('Incirrecr Credentuals');
-            }
+      if(!correctPw){
+        throw new AuthenticationError('Incirrecr Credentuals');
+      }
 
       const token = signToken(user);
 
@@ -66,7 +57,20 @@ const resolvers = {
         return skill;
       
     },
+    updateRating: async(parent, {username, rating}, context) => {
+
+ 
+        const rateUser = await User.findOne({username : username});
+        const newRate =  (rating + rateUser.rating) / (rateUser.numberOfRates + 1 );
+        const numberOfRates = rateUser.numberOfRates + 1 ;
+        const updatedUser = await User.findOneAndUpdate(
+          {_id : rateUser._id},
+          {"$set" : {rating: newRate,numberOfRates: numberOfRates}},
+          {new: true},
+        )
+        return updatedUser;
     }
+  }
   };
   
 module.exports = resolvers;
