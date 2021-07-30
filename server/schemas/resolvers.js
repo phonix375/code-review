@@ -19,14 +19,14 @@ const resolvers = {
     },
     skills: async () => {
       return Skill.find();
-    },
+    }
   },
   Mutation:{
-    addUser: async (parant, args, context) => {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
 
-        const user = await User.create(args);
-        const token = signToken(user);
-        return { token, user };
+      return { token, user };
 
     },
     addSkillToUser: async (parant, {skill} ,context) => {

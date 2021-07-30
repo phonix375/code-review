@@ -32,6 +32,11 @@ type Skill {
     _id: ID
     name: String
   }
+
+type Auth {
+    token: ID
+    user: User
+  }
   type Query {
     users: [User]
     user(username: String!): User
@@ -45,10 +50,6 @@ type Skill {
     addSkill(name: String!): Skill
     addSkillToUser(name: String! ): Skill
     updateRating(username:String!, rating:Float): User
-  }
-  type Auth {
-    token: ID!
-    user: User
   }
   `;
 
