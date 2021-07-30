@@ -35,12 +35,11 @@ const resolvers = {
 
         return skilltemp;
     },
-    Mutation: {
-        addUser: async (parant, args) => {
+    addUser: async (parant, args) => {
             const user = await User.create(args);
             return user;
-        },
-        login: async (parent, { email, password }) => {
+    },
+    login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
             if (!user) {
@@ -62,21 +61,7 @@ const resolvers = {
         return skill;
       
     },
-    updateRating: async(parent, {username, rating}, context) => {
-
- 
-        const rateUser = await User.findOne({username : username});
-        const newRate =  (rating + rateUser.rating) / (rateUser.numberOfRates + 1 );
-        const numberOfRates = rateUser.numberOfRates + 1 ;
-        const updatedUser = await User.findOneAndUpdate(
-          {_id : rateUser._id},
-          {"$set" : {rating: newRate,numberOfRates: numberOfRates}},
-          {new: true},
-        )
-        return updatedUser;
-        }
     }
-  }
   };
   
 module.exports = resolvers;

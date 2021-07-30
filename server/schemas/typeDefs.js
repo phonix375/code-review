@@ -3,13 +3,11 @@ const { gql } = require('apollo-server-express');
 
 //create the typeDefs
 const typeDefs = gql`
-
   type Comment {
     comment_text: String!
     username: String!
     createdAt: String
   }
-
   type Project {
     project_name: String!
     username: String!
@@ -20,7 +18,6 @@ const typeDefs = gql`
     deadline: String
     comments: [Comment]
   }
-
 type User {
     _id: ID
     username: String
@@ -35,7 +32,6 @@ type Skill {
     _id: ID
     name: String
   }
-
   type Query {
     users: [User]
     user(username: String!): User

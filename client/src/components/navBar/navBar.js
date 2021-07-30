@@ -4,11 +4,30 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { REGISTER_TAGGLE, LOGGIN_TAGGLE } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./navBar.css";
+import Auth from "../../utils/auth";
+
+
+
+import LoginModal from '../loginModal/login';
+import RegisterModal from '../register/register';
 
 
 function Navigation (props) {
     const [state, dispatch] = useStoreContext();
     console.log(state);
+    function loginClickHandel(){
+        if(state.registerOpen){
+            dispatch({ type: REGISTER_TAGGLE });
+        }
+        dispatch({ type: LOGGIN_TAGGLE });
+    };
+    function signUpClickHandel(){
+        if(state.logginOpen){
+            dispatch({ type: LOGGIN_TAGGLE });
+        }
+        dispatch({ type: REGISTER_TAGGLE });
+    };
+
         return (
             <div className="header">
                 <Nav className="navbar navbar-light navbar-expand-md sticky-top bg-white" style={{
@@ -25,25 +44,26 @@ function Navigation (props) {
                         color: "rgb(0,63,84)"
                         }}>
                             {`<!STUCK>`}</a><button data-bs-toggle="collapse" className="navbar-toggler" data-bs-target="#navcol-1"><span className="visually-hidden">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
-                        <div className="collapse navbar-collapse d-flex justify-content-end" id="navcol-1">
-                            <ul className="navbar-nav">
-                                <li className="nav-item"></li>
-                                <li className="nav-item"></li>
-                                <li className="nav-item"></li>
-                            </ul>
-                            <ul className="navbar-nav">
-                                <li className="nav-item"><a className="nav-link active" href="#"></a></li>
-                                <li className="nav-item"><a className="nav-link active" href="#"></a></li>
-                            </ul>
-
-                            <button className="btn btn-outline-primary" type="button" onClick={props.loginOnClick} style={{
-                                background: "rgba(255,255,255,0)"
-                                }} >Log In</button>
+                        { !Auth.loggedIn() && <div className="collapse navbar-collapse d-flex justify-content-end" id="navcol-1">
+                            <Nav.Item>
+                            <button className="btn btn-outline-primary" type="button" onClick={loginClickHandel} style={{ background: "rgba(255,255,255,0)"}} >Log In</button>
+                            </Nav.Item>
+                              <Nav.Item>
+                              <button className="btn btn-primary" type="button" onClick={signUpClickHandel}>Sign Up</button>
+                            </Nav.Item>
                             
-                            <button className="btn btn-primary d-flex" type="button" onClick={props.signUpOnClick}>Sign Up</button>
-                        </div>
+                        </div>}
+
+
+                        {Auth.loggedIn() && <div className="collapse navbar-collapse d-flex justify-content-end" id="navcol-1">
+                            <Nav.Item>
+                            <button className="btn btn-outline-primary" type="button" onClick={() => Auth.logout()} style={{ background: "rgba(255,255,255,0)"}} >Log Out</button>
+                            </Nav.Item>
+                        </div>}
                     </div>
                 </Nav>
+                {state.logginOpen && <LoginModal closeModal={loginClickHandel} ></LoginModal>}
+                {state.registerOpen && <RegisterModal closeModal2={signUpClickHandel}></RegisterModal>}
             </div>
         )
 };
