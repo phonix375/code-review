@@ -24,7 +24,7 @@ class Personal extends React.Component {
             }}
           >
             <div class="row">
-              <div class="col-md-12" style="height: 54px;">
+              <div class="col-md-12" style={{ height: "54px" }}>
                 <button
                   class="btn btn-primary"
                   type="button"
@@ -38,8 +38,8 @@ class Personal extends React.Component {
                 </button>
               </div>
             </div>
-            <div class="row" style="height: 352px;">
-              <div class="col-md-4" style="height: 185px;">
+            <div class="row" style={{ height: "352px" }}>
+              <div class="col-md-4" style={{ height: "185px" }}>
                 <h1 style={{ color: "rgb(144,199,255)", textAlign: "center" }}>
                   Current Jobs
                 </h1>
