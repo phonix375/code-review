@@ -9,7 +9,7 @@ const projectSchema = new Schema(
             min: [1, 'Project name must be at least 1 character long'],
             max: [30, 'Project name is too long']
         },
-        username: {
+        user_id: {
             type: Schema.Types.ObjectId,
             required: true
         },

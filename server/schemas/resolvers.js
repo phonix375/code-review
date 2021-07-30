@@ -1,4 +1,4 @@
-const { User, Skill } = require('../models');
+const { User, Skill, Project} = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -69,6 +69,20 @@ const resolvers = {
           {new: true},
         )
         return updatedUser;
+    },
+    addProject: async (parent, args, context) => {
+      const project = await Project.create(args);
+
+      return project;
+    },
+    addComment: async (parent, { projectId, comment_text }, context) => {
+    const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $push: { comments: { comment_text, username: context.user.username } } },
+        { new: true }
+    ).populate('comments');
+
+    return updatedProject;
     }
   }
   };
