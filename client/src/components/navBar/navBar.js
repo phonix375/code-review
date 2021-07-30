@@ -36,11 +36,11 @@ function Navigation (props) {
                                 <li className="nav-item"><a className="nav-link active" href="#"></a></li>
                             </ul>
 
-                            <button className="btn btn-outline-primary" type="button" onClick={props.loginOnClick} style={{
+                            <button className=" button1 btn btn-outline-primary" type="button" onClick={props.loginOnClick} style={{
                                 background: "rgba(255,255,255,0)"
                                 }} >Log In</button>
                             
-                            <button className="btn btn-primary d-flex" type="button" onClick={props.signUpOnClick}>Sign Up</button>
+                            <button className=" button2 btn btn-primary d-flex" type="button" onClick={props.signUpOnClick}>Sign Up</button>
                         </div>
                     </div>
                 </Nav>

@@ -19,17 +19,19 @@ class Footer extends React.Component {
                         <div className="links"
                             style={{
                                 color: "rgb(255,255,255)"
-                            }}><a href="#"
+                            }}><a className="linksInner" href="#"
                                 style={{
                                     color: "rgb(195,231,255)"
-                                }}>About Us</a><a href="#" style={{ color: "#c3e7ff" }}>Contact us</a><a href="#" style={{
+                                }}>About Us</a><a className="linksInner" href="#" style={{ color: "#c3e7ff" }}>Contact us</a><a className="linksInner" href="#" style={{
                                     color: "#c3e7ff",
                                     borderColor: "#c3e7ff"
-                                }}>Terms and Service</a></div>
+                                }}>Terms and Service</a>
+                        </div>
                         <div className="social-icons" >
-                            <a className="icon" href="#" ><AiFillGithub /></a>
-                            <a className="icon" href="#" >< AiFillInstagram /></a>
-                            <a className="icon" href="#" ><AiFillTwitterCircle /></a></div>
+                            <a className="icon" href="https://github.com/phonix375/code-review" ><AiFillGithub size={30}className="icon1"/></a>
+                            <a className="icon" href="#" >< AiFillInstagram size={30} className="icon2" /></a>
+                            <a className="icon" href="#" ><AiFillTwitterCircle size={30} className="icon3"/></a>
+                        </div>
                     </div>
                 </footer>
 
