@@ -1,7 +1,9 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
+import { useQuery } from '@apollo/react-hooks';
 
 import { useStoreContext } from "../../utils/GlobalState";
 import { CREATE_NEW_PROJECT } from "../../utils/mutations"
+import {QUERY_SKILLS} from '../../utils/queries'
 import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE } from "../../utils/actions";
 
 import { useMutation } from '@apollo/react-hooks';
@@ -9,12 +11,23 @@ import Auth from "../../utils/auth";
 import { Form } from 'react-bootstrap';
 
 
+
 function NewProjectModal(){
     const [formState, setFormState] = useState({ project_name: '', price: 0, deployed_link:'',repository_link:'',description:'',deadline:''})
+    const [skillList, setSkillList] = useState([])
     //createProject <- the state managment for open modal
     const [state, dispatch] = useStoreContext();
     const [newProject, { error }] = useMutation(CREATE_NEW_PROJECT);
+    const { loading, data: skills } = useQuery(QUERY_SKILLS);
 
+    useEffect(()=> {
+      if(skills){
+
+        setSkillList(skills)
+        console.log('this is a skill list:')
+        console.log(skills)
+      }
+  }, [setSkillList,skills])
 
 
     const handelNewProjectSubmit = async event => {
@@ -114,9 +127,11 @@ function NewProjectModal(){
                                                 id="deadline"
                                                 onChange={handleChange}/>
                             </Form.Group>
-
-                            
-
+                            {skillList.skills && skillList.skills.map(skill => (
+                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" name={skill._id} data-skillId={skill._id} label={skill.name} onChange={handleChange}/>
+                                </Form.Group>
+                            ))}
                         <div className="form-group mb-3"><button className="btn btn-primary btn-lg" style={{ width: "100%" }} type="submit">Submit</button></div>
                     </form>
                 </div>

@@ -13,3 +13,12 @@ export const QUERY_PROJECTS = gql`
     }
 }
 `;
+
+export const QUERY_SKILLS = gql`
+    {
+        skills{
+            _id
+            name
+        }
+    }
+`

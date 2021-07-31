@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
+const Skill = require('./Skill')
 
 const projectSchema = new Schema(
     {
@@ -34,6 +35,9 @@ const projectSchema = new Schema(
         },
         comments: {
             type: [commentSchema]
+        },
+        tags:{
+            type:[Skill.schema]
         }
     },
     {
