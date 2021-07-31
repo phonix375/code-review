@@ -67,8 +67,9 @@ function App() {
             <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
             </Switch>
-          <Footer />
+          
         </Container>
+        <Footer />
         </StoreProvider>
       </Router>
     </ApolloProvider>
