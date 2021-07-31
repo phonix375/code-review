@@ -82,6 +82,11 @@ function Navigation () {
                             <Nav.Item>
                             <button className="btn btn-outline-primary" type="button" onClick={newProjectTaggel} style={{ background: "rgba(255,255,255,0)"}} >Create Project</button>
                             </Nav.Item>
+                            {Auth.loggedIn() && 
+                                <Nav.Item>
+                                <Nav.Link eventKey="1" href="#/home">Hi {Auth.getProfile().data.username}</Nav.Link>
+                                </Nav.Item>
+                            } 
                         </div>}
                     </div>
                 </Nav>
