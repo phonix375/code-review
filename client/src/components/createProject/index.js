@@ -47,8 +47,12 @@ function NewProjectModal(){
         if(event.target.type === 'checkbox'){
           if(event.target.checked){
         console.log(typeof(value))
-
-            let newArry = formState.skills.concat(name);
+            let newArry = [];
+            if(!formState.skills){
+              let newArry = [name]
+            }else{
+              let newArry = formState.skills.concat(name);
+            }
             setFormState({
               ...formState,
               skills: newArry
