@@ -36,8 +36,9 @@ const projectSchema = new Schema(
         comments: {
             type: [commentSchema]
         },
-        tags:{
-            type:[Skill.schema]
+        skills:{
+            type: Schema.Types.ObjectId,
+            ref: 'skills'
         }
     },
     {

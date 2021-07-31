@@ -40,6 +40,7 @@ mutation addProject(
   $repository_link: String
   $description: String
   $deadline:String
+  $skills:[ID]
   ){
   addProject(
     project_name: $project_name
@@ -48,7 +49,8 @@ mutation addProject(
     deployed_link: $deployed_link
     repository_link: $repository_link
     description: $description
-    deadline:$deadline){
+    deadline:$deadline
+    skills: $skills){
 		_id
     project_name
     user_id

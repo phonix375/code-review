@@ -26,7 +26,8 @@ function NewProjectModal(){
            description: formState.description,
            deployed_link: formState.deployed_link,
            deadline: formState.deadline,
-           user_id: Auth.getProfile().data._id
+           user_id: Auth.getProfile().data._id,
+           skills: formState.skills
           } })
         const data = mutationResponse.data;
         console.log(data);

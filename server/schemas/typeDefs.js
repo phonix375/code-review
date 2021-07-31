@@ -21,7 +21,15 @@ type Comment {
     createdAt: String
   }
 
-type Project {
+
+
+
+type Skill {
+    _id: ID
+    name: String
+  }
+
+  type Project {
     _id: ID
     project_name: String
     user_id: ID
@@ -31,12 +39,7 @@ type Project {
     description: String
     deadline: String
     comments: [Comment]
-  }
-
-
-type Skill {
-    _id: ID
-    name: String
+    skills:[Skill]
   }
   type Query {
     users: [User]
@@ -53,7 +56,7 @@ type Skill {
     addSkill(name: String!): Skill
     addSkillToUser(name: String! ): Skill
     updateRating(username:String!, rating:Float): User
-    addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String) : Project
+    addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
     addComment(comment_text: String, username: String ) : Comment
   }
   type Auth {

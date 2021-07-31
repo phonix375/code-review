@@ -80,6 +80,7 @@ const resolvers = {
         return updatedUser;
     },
     addProject: async (parent, args, context) => {
+      console.log(args);
       const project = await Project.create(args);
 
       return project;
