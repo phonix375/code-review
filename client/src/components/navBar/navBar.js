@@ -62,12 +62,13 @@ function Navigation () {
                     marginBottom: "95px"
                     }}>
                         
-                    <div className="container-fluid"><a className="navbar-brand" href="/" style={{
+                    <div className="container-fluid"><a className="navbar-brand" href="/home" style={{
                         fontWeight: "bold",
                         fontSize: "30px",
                         color: "rgb(0,63,84)"
                         }}>
-                            {`<!STUCK>`}</a><button data-bs-toggle="collapse" className="navbar-toggler" data-bs-target="#navcol-1"><span className="visually-hidden">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+                            {`<!STUCK>`}</a><button data-bs-toggle="collapse" className="navbar-toggler" data-bs-target="#navcol-1">
+                                <span className="navbar-toggler-icon"></span></button>
                         { !Auth.loggedIn() && <div className="collapse navbar-collapse d-flex justify-content-end" id="navcol-1">
                             <Nav.Item>
                             <button className="btn btn-outline-primary" type="button" onClick={loginClickHandel} style={{ background: "rgba(255,255,255,0)"}} >Log In</button>
@@ -88,7 +89,7 @@ function Navigation () {
                             </Nav.Item>
                             {Auth.loggedIn() && 
                                 <Nav.Item>
-                                <Nav.Link eventKey="1" href="personal" style={{ background: "rgba(255,255,255,0)"}}>Hello {Auth.getProfile().data.username}</Nav.Link>
+                                <Nav.Link eventKey="1" href="/personal" style={{ background: "rgba(255,255,255,0)"}}>Hello {Auth.getProfile().data.username}</Nav.Link>
                                 </Nav.Item>
                             } 
                         </div>}
