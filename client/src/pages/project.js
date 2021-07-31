@@ -1,22 +1,11 @@
 import React from 'react';
-import Welcome from '../components/welcome/welcome'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import './projectStyle.css'
+import Project from "../components/project"
 
 
-
-function Project(){
+function ProjectPage(){
     return(
-        <Container fluid className="" >
-        <Row className="justify-content-md-center mt-3" >
-          <Col> <Welcome /></Col>
-        </Row>
-      </Container>
-           
-
+ <Project />
     )
 }
 
-export default Project;
+export default ProjectPage;

@@ -11,7 +11,7 @@ import Navigation from "./components/navBar/navBar";
 import React from "react";
 import { StoreProvider } from "./utils/GlobalState";
 import Home from "./pages/home"
-import Project from "./pages/project"
+import ProjectPage from "./pages/project"
 
 
 
@@ -38,9 +38,11 @@ const client = new ApolloClient({
 function App() {
 
   return (
+
     <ApolloProvider client={client}>
       <Router>
       <StoreProvider>
+
       <Navigation></Navigation>
         <Container>
           <video autoPlay loop muted 
@@ -57,13 +59,12 @@ function App() {
           }}>
             <source src={backgroundvid} type="video/mp4"/>
           </video>
-          
-           
+  
             <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/project/:id" component={Project} />
+            <Route exact path="/project/:id" component={ProjectPage} />
             </Switch>
-          
+
         </Container>
         </StoreProvider>
       </Router>
