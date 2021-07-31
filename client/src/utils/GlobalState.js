@@ -9,6 +9,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     registerOpen: false,
     logginOpen : false,
     createProject: false,
+    projects: []
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
