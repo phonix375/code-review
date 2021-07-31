@@ -11,7 +11,7 @@ import { Form } from 'react-bootstrap';
 
 
 function NewProjectModal(){
-    const [formState, setFormState] = useState({ project_name: '', price: 0, deployed_link:'',repository_link:'',description:'',deadline:'', skills:[]})
+    const [formState, setFormState] = useState({ project_name: '', price: 0, deployed_link:'',repository_link:'',description:'',deadline:''})
     //createProject <- the state managment for open modal
     const [state, dispatch] = useStoreContext();
     const [newProject] = useMutation(CREATE_NEW_PROJECT);
@@ -44,7 +44,7 @@ function NewProjectModal(){
 
     const handleChange = event => {
         const { name, value } = event.target;
-        if(event.target.type == 'checkbox'){
+        if(event.target.type === 'checkbox'){
           if(event.target.checked){
         console.log(typeof(value))
 

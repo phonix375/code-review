@@ -80,7 +80,6 @@ function LoginModal(){
                         <div className="form-group mb-3"><button className="btn btn-primary btn-lg" style={{ width: "100%" }} type="submit">Log in</button></div>
                     </form>
                     <hr style={{ backgroundColor: "#bababa" }} />
-                    <p className="text-center">Or&nbsp;<a className="text-decoration-none" href="#">Forget password</a></p>
                     <p className="text-center">Don't have an account? &nbsp;<a className="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signin" onClick={signUpClickHandel}>Sign Up</a></p>
                 </div>
             </div>
