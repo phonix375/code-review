@@ -6,7 +6,11 @@ import ProjectBoard from '../components/projectBoard/projectBoard'
 
 function Home(){
     return(
-        <ProjectBoard />
+        
+        <ProjectBoard/>
+        <Container>
+            
+        </Container>
     )
 }
 

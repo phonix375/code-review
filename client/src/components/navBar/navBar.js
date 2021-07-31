@@ -47,6 +47,10 @@ function Navigation () {
         dispatch({ type: NEW_PROJECT_TAGGLE });
     }
 
+    function profileClickHandel(){
+        dispatch({});
+    }
+
         return (
             <div className="header">
                 <Nav className="navbar navbar-light navbar-expand-md sticky-top bg-white" style={{
