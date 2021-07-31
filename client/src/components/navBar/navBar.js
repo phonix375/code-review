@@ -84,7 +84,7 @@ function Navigation () {
                             </Nav.Item>
                             {Auth.loggedIn() && 
                                 <Nav.Item>
-                                <Nav.Link eventKey="1" href="#/home">Hi {Auth.getProfile().data.username}</Nav.Link>
+                                <Nav.Link eventKey="1" href="#/home" style={{ background: "rgba(255,255,255,0)"}}>Hello {Auth.getProfile().data.username}</Nav.Link>
                                 </Nav.Item>
                             } 
                         </div>}

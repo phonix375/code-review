@@ -39,6 +39,7 @@ function ProjectBoard(props){
                             <div className="card border-0"><a href={`/project/${project._id}`}> <img className="card-img-top scale-on-hover" src={placeholder} alt="Card Image" /></a>
                                 <div className="card-body">
                                     <h6><a href={`/project/${project._id}`}>{project.project_name}</a></h6>
+                        
                                     <p className="text-muted card-text">{project.description}</p>
                                     <p className="text-muted card-text">Price : {project.price}</p>
                                 </div>
