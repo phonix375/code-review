@@ -45,7 +45,11 @@ const userSchema = new Schema(
             required: false,
             unique: false,
             default: 0
-          }
+          },
+          myProjects:{[
+            type:Schema.Types.ObjectId,
+            ref: 'Project'
+          ]}
     },
 
 );
