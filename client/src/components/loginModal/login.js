@@ -17,6 +17,7 @@ function LoginModal(){
     const [formState, setFormState] = useState({ email: '', password: '' })
     const [dispatch] = useStoreContext();
     const [login] = useMutation(LOGIN);
+    const [state,dispatch] = useStoreContext();
 
 
 
