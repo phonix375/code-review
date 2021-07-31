@@ -3,24 +3,6 @@ const { gql } = require('apollo-server-express');
 
 //create the typeDefs
 const typeDefs = gql`
-
-  type Comment {
-    comment_text: String!
-    username: String!
-    createdAt: String
-  }
-
-  type Project {
-    project_name: String!
-    username: String!
-    price: Int!
-    deployed_link: String
-    repository_link: String
-    description: String
-    deadline: String
-    comments: [Comment]
-  }
-
 type User {
     _id: ID
     username: String
@@ -31,16 +13,41 @@ type User {
     balance: Float
     numberOfRates: Int
   }
+
+type Comment {
+    _id: ID
+    comment_text: String
+    username: String
+    createdAt: String
+  }
+
+
+
+
 type Skill {
     _id: ID
     name: String
   }
 
+  type Project {
+    _id: ID
+    project_name: String
+    user_id: ID
+    price: Float
+    deployed_link: String
+    repository_link: String
+    description: String
+    deadline: String
+    comments: [Comment]
+    skills:[Skill]
+  }
   type Query {
     users: [User]
     user(username: String!): User
     skills:[Skill]
     addSkillToUser: Skill
+    getProjects: [Project]
+    getProject(projectId: ID!): Project
   }
   
   type Mutation {
@@ -49,6 +56,8 @@ type Skill {
     addSkill(name: String!): Skill
     addSkillToUser(name: String! ): Skill
     updateRating(username:String!, rating:Float): User
+    addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
+    addComment(comment_text: String, username: String ) : Comment
   }
   type Auth {
     token: ID!

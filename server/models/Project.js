@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
+const Skill = require('./Skill')
 
 const projectSchema = new Schema(
     {
@@ -9,7 +10,7 @@ const projectSchema = new Schema(
             min: [1, 'Project name must be at least 1 character long'],
             max: [30, 'Project name is too long']
         },
-        username: {
+        user_id: {
             type: Schema.Types.ObjectId,
             required: true
         },
@@ -34,6 +35,10 @@ const projectSchema = new Schema(
         },
         comments: {
             type: [commentSchema]
+        },
+        skills:{
+            type: Schema.Types.ObjectId,
+            ref: 'skills'
         }
     },
     {

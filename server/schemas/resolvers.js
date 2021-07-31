@@ -1,4 +1,4 @@
-const { User, Skill, Project, Chat } = require('../models');
+const { User, Skill, Project} = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -20,6 +20,15 @@ const resolvers = {
     skills: async () => {
       return Skill.find();
     },
+    getProjects: async () => {
+      const projects = await Project.find({}).select('-__v').populate('comments');
+      return projects;
+    },
+    getProject: async (parent, { projectId }) => {
+      const project = await Project.findOne({ _id: projectId }).select('-__v').populate('comments');
+
+      return project;
+  }
   },
   Mutation:{
     addUser: async (parant, args, context) => {
@@ -35,22 +44,17 @@ const resolvers = {
 
         return skilltemp;
     },
-    Mutation: {
-        addUser: async (parant, args) => {
-            const user = await User.create(args);
-            return user;
-        },
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+    login: async (parent, { email,password }) => {
+      const user= await User.findOne({ email });
 
-            if (!user) {
-                throw new AuthenticationError('Incorrect credentials')
-            }
-            const correctPw = await user.isCorrectPassword(password);
+      if(!user){
+        throw new AuthenticationError('Incorrect credentials')
+      }
+      const correctPw = await user.isCorrectPassword(password);
 
-            if (!correctPw) {
-                throw new AuthenticationError('Incirrecr Credentuals');
-            }
+      if(!correctPw){
+        throw new AuthenticationError('Incirrecr Credentuals');
+      }
 
       const token = signToken(user);
 
@@ -74,7 +78,21 @@ const resolvers = {
           {new: true},
         )
         return updatedUser;
-        }
+    },
+    addProject: async (parent, args, context) => {
+      console.log(args);
+      const project = await Project.create(args);
+
+      return project;
+    },
+    addComment: async (parent, { projectId, comment_text }, context) => {
+    const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $push: { comments: { comment_text, username: context.user.username } } },
+        { new: true }
+    ).populate('comments');
+
+    return updatedProject;
     }
   }
   };
