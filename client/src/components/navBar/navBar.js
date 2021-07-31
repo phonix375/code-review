@@ -1,21 +1,35 @@
-import React from 'react';
-import styled from "styled-components";
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE } from "../../utils/actions";
+import React, {useEffect} from 'react';
+import { Nav } from 'react-bootstrap';
+import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE, UPDATE_SKILL_LIST } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./navBar.css";
 import Auth from "../../utils/auth";
-
-
+import {QUERY_SKILLS} from '../../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
 
 import LoginModal from '../loginModal/login';
 import RegisterModal from '../register/register';
 import NewProjectModal from '../createProject'
 
 
-function Navigation (props) {
+function Navigation () {
     const [state, dispatch] = useStoreContext();
+    const {data: skills } = useQuery(QUERY_SKILLS)
     console.log(state);
+    
+    useEffect(()=> {
+        if(skills){
+  
+          dispatch({
+              type: UPDATE_SKILL_LIST,
+              skills : skills.skills
+          })
+          console.log('this is a skill list:')
+          console.log(skills.skills)
+        }
+    }, [dispatch,skills])
+
+
     function loginClickHandel(){
         if(state.registerOpen){
             dispatch({ type: REGISTER_TAGGLE });

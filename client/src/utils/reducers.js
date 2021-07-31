@@ -3,7 +3,8 @@ import {
     LOGGIN_TAGGLE,
     REGISTER_TAGGLE,
     NEW_PROJECT_TAGGLE,
-    UPDATE_PROJECTS
+    UPDATE_PROJECTS,
+    UPDATE_SKILL_LIST
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -28,6 +29,11 @@ export const reducer = (state, action) => {
       return{
         ...state,
         projects:[...action.projects]
+      }
+    case UPDATE_SKILL_LIST:
+      return{
+        ...state,
+        skills:[...action.skills]
       }
 
     default:

@@ -32,7 +32,7 @@ function ProjectBoard(){
                     <div className="container">
                         <div className="row">
                         {state.projects.map(project => (
-                            <div className="col-md-6 col-lg-4 cards">
+                            <div className="col-md-6 col-lg-4 cards" key={project._id}>
                             <div className="card border-0"><a href="#"><img className="card-img-top scale-on-hover" src={placeholder} alt="Card Image" /></a>
                                 <div className="card-body">
                                     <h6><a href="#">{project.project_name}</a></h6>

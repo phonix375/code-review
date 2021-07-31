@@ -15,8 +15,8 @@ import { Form } from 'react-bootstrap';
 
 function LoginModal(){
     const [formState, setFormState] = useState({ email: '', password: '' })
-    const [state, dispatch] = useStoreContext();
-    const [login, { error }] = useMutation(LOGIN);
+    const [dispatch] = useStoreContext();
+    const [login] = useMutation(LOGIN);
 
 
 

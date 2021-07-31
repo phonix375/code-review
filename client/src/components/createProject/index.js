@@ -1,10 +1,8 @@
-import React, { useState, useEffect }  from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useState }  from 'react';
 
 import { useStoreContext } from "../../utils/GlobalState";
 import { CREATE_NEW_PROJECT } from "../../utils/mutations"
-import {QUERY_SKILLS} from '../../utils/queries'
-import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE } from "../../utils/actions";
+import {NEW_PROJECT_TAGGLE } from "../../utils/actions";
 
 import { useMutation } from '@apollo/react-hooks';
 import Auth from "../../utils/auth";
@@ -13,22 +11,10 @@ import { Form } from 'react-bootstrap';
 
 
 function NewProjectModal(){
-    const [formState, setFormState] = useState({ project_name: '', price: 0, deployed_link:'',repository_link:'',description:'',deadline:''})
-    const [skillList, setSkillList] = useState([])
+    const [formState, setFormState] = useState({ project_name: '', price: 0, deployed_link:'',repository_link:'',description:'',deadline:'', skills:[]})
     //createProject <- the state managment for open modal
     const [state, dispatch] = useStoreContext();
-    const [newProject, { error }] = useMutation(CREATE_NEW_PROJECT);
-    const { loading, data: skills } = useQuery(QUERY_SKILLS);
-
-    useEffect(()=> {
-      if(skills){
-
-        setSkillList(skills)
-        console.log('this is a skill list:')
-        console.log(skills)
-      }
-  }, [setSkillList,skills])
-
+    const [newProject] = useMutation(CREATE_NEW_PROJECT);
 
     const handelNewProjectSubmit = async event => {
       event.preventDefault();
@@ -57,10 +43,22 @@ function NewProjectModal(){
 
     const handleChange = event => {
         const { name, value } = event.target;
-        setFormState({
-          ...formState,
-          [name]: value
-        });
+        if(event.target.type == 'checkbox'){
+          console.log('this is a checkbox');
+          if(event.target.checked ){
+            setFormState({...formState,skills: state.skills.push(event.target.name)})
+            }else{
+              const index = state.skills.indexOf(event.target.name);
+              if(index > -1){
+                setFormState(...formState, state.skills.splice(index, 1))
+              }
+            }
+          }else{
+            setFormState({
+              ...formState,
+              [name]: value
+            });
+          }
         console.log(formState);
       };
     
@@ -127,9 +125,9 @@ function NewProjectModal(){
                                                 id="deadline"
                                                 onChange={handleChange}/>
                             </Form.Group>
-                            {skillList.skills && skillList.skills.map(skill => (
+                            {state.skills && state.skills.map(skill => (
                                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" name={skill._id} data-skillId={skill._id} label={skill.name} onChange={handleChange}/>
+                                <Form.Check type="checkbox" name={skill._id} label={skill.name} onChange={handleChange} key={skill._id}/>
                                 </Form.Group>
                             ))}
                         <div className="form-group mb-3"><button className="btn btn-primary btn-lg" style={{ width: "100%" }} type="submit">Submit</button></div>
@@ -139,8 +137,6 @@ function NewProjectModal(){
         );
     
 }
-
-
 
 export default NewProjectModal;
 
