@@ -8,9 +8,8 @@ function Home(){
     return(
         
         <ProjectBoard/>
-        <Container>
-            
-        </Container>
+       
+        
     )
 }
 

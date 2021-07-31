@@ -13,6 +13,7 @@ import { StoreProvider } from "./utils/GlobalState";
 import Home from "./pages/home"
 import ProjectPage from "./pages/project"
 import Personal from './pages/personal'
+import Footer from './components/footer/footer'
 
 
 
@@ -62,11 +63,11 @@ function App() {
           </video>
   
             <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
             </Switch>
-
+          <Footer />
         </Container>
         </StoreProvider>
       </Router>
