@@ -43,22 +43,11 @@ function NewProjectModal(){
 
     const handleChange = event => {
         const { name, value } = event.target;
-        if(event.target.type == 'checkbox'){
-          console.log('this is a checkbox');
-          if(event.target.checked ){
-            setFormState({...formState,skills: state.skills.push(event.target.name)})
-            }else{
-              const index = state.skills.indexOf(event.target.name);
-              if(index > -1){
-                setFormState(...formState, state.skills.splice(index, 1))
-              }
-            }
-          }else{
             setFormState({
               ...formState,
               [name]: value
             });
-          }
+          
         console.log(formState);
       };
     

@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import { Nav } from 'react-bootstrap';
 import { REGISTER_TAGGLE, LOGGIN_TAGGLE, NEW_PROJECT_TAGGLE, UPDATE_SKILL_LIST } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
-import "./navBar.css";
 import Auth from "../../utils/auth";
 import {QUERY_SKILLS} from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';

@@ -11,6 +11,7 @@ import Navigation from "./components/navBar/navBar";
 import React from "react";
 import { StoreProvider } from "./utils/GlobalState";
 import Home from "./pages/home"
+import Project from "./pages/project"
 
 
 
@@ -39,7 +40,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Container className="container1">
+      <StoreProvider>
+      <Navigation></Navigation>
+        <Container>
           <video autoPlay loop muted 
           style={{
             position: "fixed",
@@ -54,13 +57,15 @@ function App() {
           }}>
             <source src={backgroundvid} type="video/mp4"/>
           </video>
-          <StoreProvider>
-            <Navigation></Navigation>
+          
+           
             <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/project/:id" component={Project} />
             </Switch>
-          </StoreProvider>
+          
         </Container>
+        </StoreProvider>
       </Router>
     </ApolloProvider>
 
