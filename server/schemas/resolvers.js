@@ -20,6 +20,15 @@ const resolvers = {
     skills: async () => {
       return Skill.find();
     },
+    getProjects: async () => {
+      const projects = await Project.find({}).select('-__v').populate('comments');
+      return projects;
+    },
+    getProject: async (parent, { projectId }) => {
+      const project = await Project.findOne({ _id: projectId }).select('-__v').populate('comments');
+
+      return project;
+  }
   },
   Mutation:{
     addUser: async (parant, args, context) => {

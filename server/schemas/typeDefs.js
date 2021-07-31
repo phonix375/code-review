@@ -43,6 +43,8 @@ type Skill {
     user(username: String!): User
     skills:[Skill]
     addSkillToUser: Skill
+    getProjects: [Project]
+    getProject(projectId: ID!): Project
   }
   
   type Mutation {
