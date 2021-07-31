@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./projectBoard.css";
 import   placeholder from "../../assets/placeholder.jpeg";
 import { QUERY_PROJECTS } from "../../utils/queries"
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 
 
-function ProjectBoard(){
+function ProjectBoard(props){
     const [state, dispatch] = useStoreContext();
 
     const { loading, data } = useQuery(QUERY_PROJECTS);

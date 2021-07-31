@@ -11,6 +11,7 @@ import RegisterModal from '../register/register';
 import NewProjectModal from '../createProject'
 
 
+
 function Navigation () {
     const [state, dispatch] = useStoreContext();
     const {data: skills } = useQuery(QUERY_SKILLS)
@@ -56,7 +57,8 @@ function Navigation () {
                     width: "100% !important",
                     marginBottom: "95px"
                     }}>
-                    <div className="container-fluid"><a className="navbar-brand" href="#" style={{
+                        
+                    <div className="container-fluid"><a className="navbar-brand" href="/" style={{
                         fontWeight: "bold",
                         fontSize: "30px",
                         color: "rgb(0,63,84)"

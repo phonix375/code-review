@@ -12,6 +12,7 @@ import React from "react";
 import { StoreProvider } from "./utils/GlobalState";
 import Home from "./pages/home"
 import ProjectPage from "./pages/project"
+import Personal from './pages/personal'
 
 
 
@@ -62,6 +63,7 @@ function App() {
   
             <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
             </Switch>
 

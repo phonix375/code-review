@@ -43,10 +43,35 @@ function NewProjectModal(){
 
     const handleChange = event => {
         const { name, value } = event.target;
+        if(event.target.type == 'checkbox'){
+          if(event.target.checked){
+        console.log(typeof(value))
+
+            let newArry = formState.skills.concat(name);
             setFormState({
               ...formState,
-              [name]: value
+              skills: newArry
             });
+          }else{
+            var filteredItems = formState.skills.filter(function(item)
+                {
+                    return item !== name ;
+                });
+                setFormState({
+                  ...formState,
+                  skills: filteredItems
+                });
+          }
+          
+          console.log(formState);
+        }else{
+          console.log(name, value)
+          setFormState({
+            ...formState,
+            [name]: value
+          });
+        }
+
           
         console.log(formState);
       };
@@ -99,7 +124,8 @@ function NewProjectModal(){
                             <Form.Group className="form-group mb-3">
                             <Form.Label>Description :</Form.Label>
                             <Form.Control className="form-control" 
-                                                type="text"
+                                                as="textarea"
+                                                rows={5}
                                                 placeholder="Description" 
                                                 name="description"
                                                 id="description"
