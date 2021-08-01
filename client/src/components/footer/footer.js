@@ -7,7 +7,7 @@ import "./footer.css"
 class Footer extends React.Component {
     render() {
         return (
-            <div className="footer">
+            <div className="footer" >
                 <footer className="page-footer"
                     style={{
                         color: "rgb(255, 255, 255)", background: "#003f54",

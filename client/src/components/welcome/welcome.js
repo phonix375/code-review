@@ -26,6 +26,7 @@ class Welcome extends React.Component {
                 style={{
                   color: "rgb(240, 217, 90)",
                   padding: "5px",
+                  fontSize: "45px",
                 }}
               >
                 Welcome

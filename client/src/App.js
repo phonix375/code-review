@@ -12,6 +12,7 @@ import { StoreProvider } from "./utils/GlobalState";
 import Home from "./pages/home"
 import ProjectPage from "./pages/project"
 import Personal from './pages/personal'
+import Footer from './components/footer/footer'
 
 
 
@@ -61,8 +62,9 @@ function App() {
             <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
             </Switch>
-
+          
         </Container>
+        <Footer />
         </StoreProvider>
       </Router>
     </ApolloProvider>
