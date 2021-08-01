@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
-const Skill = require('./Skill')
+const Skill = require('./Skill');
 
 const projectSchema = new Schema(
     {
@@ -42,7 +42,11 @@ const projectSchema = new Schema(
         skills: {
             type: Schema.Types.ObjectId,
             ref: 'skills'
-        }
+        },
+        requests: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     },
     {
         toJSON: {

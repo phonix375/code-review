@@ -90,7 +90,20 @@ const resolvers = {
         { _id: projectId },
         { $push: { comments: { comment_text, username: context.user.username } } },
         { new: true }
-      ).populate('comments');
+      )
+        .populate('comments')
+        .populate('requests');
+
+      return updatedProject;
+    },
+    projectRequest: async (parent, { projectId, user_id }, context) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $addToSet: { requests: { _id: user_id } } },
+        { new: true }
+      )
+        .populate('comments')
+        .populate('requests');
 
       return updatedProject;
     }

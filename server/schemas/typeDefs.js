@@ -42,6 +42,7 @@ type Skill {
     comments: [Comment]
     skills:[Skill]
     commentCount: Int
+    requests: [User]
   }
   type Query {
     users: [User]
@@ -60,6 +61,7 @@ type Skill {
     updateRating(username:String!, rating:Float): User
     addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
     addComment(projectId: ID!, comment_text: String!) : Project
+    projectRequest(projectId: ID!, user_id: String!): Project
   }
   type Auth {
     token: ID!

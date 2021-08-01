@@ -85,3 +85,31 @@ export const ADD_COMMENT = gql`
       }
     }
 `;
+
+export const PROJECT_REQUEST = gql`
+mutation projectRequest($projectId: ID!, $user_id: String!) {
+  projectRequest(projectId: $projectId, user_id: $user_id) {
+    _id
+    project_name
+    user_id
+    username
+    price
+    deployed_link
+    repository_link
+    description
+    deadline
+    comments {
+      _id
+      comment_text
+      username
+    }
+    commentCount
+    requests {
+      _id
+      username
+      email
+      rating
+    }
+  }
+}
+`;
