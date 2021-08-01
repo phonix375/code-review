@@ -18,7 +18,8 @@ class Welcome extends React.Component {
                         <div className="intro">
                             <h2 className="text-center" style={{
                                 color: "rgb(240, 217, 90)",
-                                padding: "5px"
+                                padding: "5px",
+                                fontSize: "45px"
                             }}>Welcome</h2>
                             <p className="text-center" style={{
                                 color: "rgb(240, 217, 90)",

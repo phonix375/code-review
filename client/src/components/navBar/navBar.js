@@ -62,7 +62,7 @@ function Navigation () {
                     marginBottom: "95px"
                     }}>
                         
-                    <div className="container-fluid"><a className="navbar-brand" href="/home" style={{
+                    <div className="container-fluid"><a className="navbar-brand" href="/" style={{
                         fontWeight: "bold",
                         fontSize: "30px",
                         color: "rgb(0,63,84)"
