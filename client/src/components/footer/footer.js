@@ -4,6 +4,7 @@ import { AiFillTwitterCircle, AiFillInstagram, AiFillGithub } from "react-icons/
 import "./footer.css"
 
 
+
 class Footer extends React.Component {
     render() {
         return (
@@ -15,21 +16,22 @@ class Footer extends React.Component {
                         borderStyle: "none",
                         borderColor: "rgb(255,255,255)"
                     }}>
-                    <div className="container">
+                    <div className="container3">
                         <div className="links"
                             style={{
                                 color: "rgb(255,255,255)"
-                            }}><a href="#"
+                            }}><a className="linksa" href="#"
                                 style={{
                                     color: "rgb(195,231,255)"
-                                }}>About Us</a><a href="#" style={{ color: "#c3e7ff" }}>Contact us</a><a href="#" style={{
+                                }}>About Us</a><a className="linksa" href="#" style={{ color: "#c3e7ff" }}>Contact us</a><a className="linksa" href="/donations" style={{
                                     color: "#c3e7ff",
                                     borderColor: "#c3e7ff"
-                                }}>Terms and Service</a></div>
+                                }}>Donations</a>
+                        </div>
                         <div className="social-icons" >
-                            <a className="icon" href="#" ><AiFillGithub /></a>
-                            <a className="icon" href="#" >< AiFillInstagram /></a>
-                            <a className="icon" href="#" ><AiFillTwitterCircle /></a></div>
+                            <a className="icon" href="#" ><AiFillGithub size={40} /></a>
+                            <a className="icon" href="#" >< AiFillInstagram size={40} /></a>
+                            <a className="icon" href="#" ><AiFillTwitterCircle size={40} /></a></div>
                     </div>
                 </footer>
 
