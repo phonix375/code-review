@@ -46,7 +46,11 @@ const projectSchema = new Schema(
         requests: [{
             type: Schema.Types.ObjectId,
             ref: 'User'
-        }]
+        }],
+        accepted_user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
     },
     {
         toJSON: {

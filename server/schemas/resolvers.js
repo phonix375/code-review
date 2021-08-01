@@ -21,17 +21,17 @@ const resolvers = {
       return Skill.find();
     },
     getProjects: async () => {
-      const projects = await Project.find({}).select('-__v').populate('comments').populate('user_id').populate('requests');
+      const projects = await Project.find({}).select('-__v').populate('comments').populate('user_id').populate('requests').populate('accepted_user');
       return projects;
     },
     getProject: async (parent, { projectId }) => {
-      const project = await Project.findOne({ _id: projectId }).select('-__v').populate('comments').populate('requests');
+      const project = await Project.findOne({ _id: projectId }).select('-__v').populate('comments').populate('requests').populate('accepted_user');
 
       return project;
     },
     getProjectsByUser: async (parent, args) => {
       console.log(args);
-      const projects = await Project.find({ user_id: args.user_id }).select('-__v').populate('comments').populate('requests');
+      const projects = await Project.find({ user_id: args.user_id }).select('-__v').populate('comments').populate('requests').populate('accepted_user');
 
       return projects;
     }
@@ -110,6 +110,16 @@ const resolvers = {
       )
         .populate('comments')
         .populate('requests');
+
+      return updatedProject;
+    },
+    acceptProjectRequest: async (parent, { projectId, user_id }, context) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $set: { accepted_user: user_id, requests: [] } },
+        { new: true }
+      )
+        .populate('comments');
 
       return updatedProject;
     }

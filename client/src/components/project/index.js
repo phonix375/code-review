@@ -56,7 +56,7 @@ function Project() {
     const user_id = userProfile.data._id;
     const projectId = id;
 
-    console.log('requested by ' + userProfile.data.username);
+    // console.log('requested by ' + userProfile.data.username);
     try {
       await projectRequest({
         variables: { projectId, user_id }

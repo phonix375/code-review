@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import Project from "../components/project";
 import { QUERY_PROJECTS_BY_USER } from '../utils/queries';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
 import { Container } from 'react-bootstrap';
+import { ACCEPT_PROJECT_REQUEST } from '../utils/mutations';
 
 function ProjectPage() {
+
+    const [acceptProjectRequest, { error }] = useMutation(ACCEPT_PROJECT_REQUEST);
 
     const userProfile = Auth.loggedIn() ? Auth.getProfile() : '';
     const userId = userProfile.data._id;
@@ -20,11 +23,24 @@ function ProjectPage() {
         return <div>Loading...</div>
     }
 
-    const acceptClickHandler = event => {
+    const acceptClickHandler = async event => {
         event.preventDefault();
 
-        console.log(event.target.id);
-        console.log(event);
+        // console.log(event.target.dataset.projectId);
+        // console.log(event.target.dataset.userId);
+        const user_id = event.target.dataset.userId;
+        const projectId = event.target.dataset.projectId;
+
+        try {
+            await acceptProjectRequest({
+                variables: { projectId, user_id }
+            })
+        }
+        catch (e) {
+            console.error(e);
+        }
+
+
     }
 
     return (
@@ -47,7 +63,7 @@ function ProjectPage() {
                                     {project.requests.map(request => (
                                         <>
                                             <h4>{request.username}</h4>
-                                            <button onClick={acceptClickHandler} id={request._id}>Accept</button>
+                                            <button onClick={acceptClickHandler} data-user-id={request._id} data-project-id={project._id}>Accept</button>
                                         </>
                                     ))}
                                 </div>

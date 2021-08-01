@@ -43,6 +43,7 @@ type Skill {
     skills:[Skill]
     commentCount: Int
     requests: [User]
+    accepted_user: User
   }
   type Query {
     users: [User]
@@ -63,6 +64,7 @@ type Skill {
     addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
     addComment(projectId: ID!, comment_text: String!) : Project
     projectRequest(projectId: ID!, user_id: String!): Project
+    acceptProjectRequest(projectId: ID!, user_id: ID!): Project
   }
   type Auth {
     token: ID!
