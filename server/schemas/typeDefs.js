@@ -51,6 +51,7 @@ type Skill {
     addSkillToUser: Skill
     getProjects: [Project]
     getProject(projectId: ID!): Project
+    getProjectsByUser(user_id: ID!): [Project]
   }
   
   type Mutation {

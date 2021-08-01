@@ -27,4 +27,32 @@ export const QUERY_SKILLS = gql`
             name
         }
     }
-`
+`;
+
+export const QUERY_PROJECTS_BY_USER = gql`
+query getProjectsByUser($user_id: ID!){
+    getProjectsByUser(user_id: $user_id) {
+      _id
+      project_name
+      user_id
+      username
+      price
+      deployed_link
+      repository_link
+      description
+      deadline
+      comments {
+        _id
+        comment_text
+        createdAt
+      }
+      commentCount
+      requests {
+        _id
+        username
+        email
+        rating
+      }
+    }
+  }
+`;
