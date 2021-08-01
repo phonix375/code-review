@@ -60,7 +60,7 @@ function Project() {
         <CommentList comments={currentProject.comments} />
       )}
 
-      {Auth.loggedIn() && <CommentForm projectId={currentProject._id} />}
+      {Auth.loggedIn() && <CommentForm projectId={id} />}
     </Container>
   )
 }

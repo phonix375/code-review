@@ -36,7 +36,7 @@ const projectSchema = new Schema(
         comments: {
             type: [commentSchema]
         },
-        skills:{
+        skills: {
             type: Schema.Types.ObjectId,
             ref: 'skills'
         }
@@ -48,6 +48,10 @@ const projectSchema = new Schema(
         }
     }
 );
+
+projectSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+});
 
 const Project = model('Project', projectSchema);
 

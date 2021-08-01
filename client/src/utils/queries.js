@@ -10,6 +10,12 @@ export const QUERY_PROJECTS = gql`
         repository_link
         description
         deadline
+        comments {
+            _id
+            comment_text
+            username
+        }
+        commentCount
     }
 }
 `;

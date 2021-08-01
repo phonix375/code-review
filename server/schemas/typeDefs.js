@@ -40,6 +40,7 @@ type Skill {
     deadline: String
     comments: [Comment]
     skills:[Skill]
+    commentCount: Int
   }
   type Query {
     users: [User]
