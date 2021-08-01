@@ -14,6 +14,9 @@ const projectSchema = new Schema(
             type: Schema.Types.ObjectId,
             required: true
         },
+        username: {
+            type: String
+        },
         price: {
             type: Number,
             required: true

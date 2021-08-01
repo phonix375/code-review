@@ -33,6 +33,7 @@ type Skill {
     _id: ID
     project_name: String
     user_id: ID
+    username: String
     price: Float
     deployed_link: String
     repository_link: String
