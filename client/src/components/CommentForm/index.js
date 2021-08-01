@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_COMMENT } from '../../utils/mutations';
+import "./style.css"
 
 const CommentForm = ({ projectId }) => {
 
@@ -28,15 +29,15 @@ const CommentForm = ({ projectId }) => {
 
     return (
         <div>
-            <form onSubmit={handleFormSubmit}>
+            <form className="commentForm" onSubmit={handleFormSubmit}>
                 <textarea
                     placeholder="Leave a comment..."
                     value={comment_text}
-                    className="form-input col-12 col-md-9"
+                    className="commentBox form-input col-12 col-md-9"
                     onChange={handleChange}
                 ></textarea>
 
-                <button type="submit">Submit</button>
+                <button className="commentBtn" type="submit">Submit</button>
             </form>
         </div>
     )

@@ -48,7 +48,7 @@ function App() {
       <StoreProvider>
 
       <Navigation></Navigation>
-        <Container>
+        <Container className="footerpad">
           <video autoPlay loop muted 
           style={{
             position: "fixed",
