@@ -1,0 +1,14 @@
+.cards{
+    padding-bottom: 15px !important;
+    padding-top: 15px !important;
+}
+.card-body {
+    background:  #c3e7ff ;
+    
+}
+.card-text {
+    color: #003f54 !important;
+}
+.projectBoard {
+    padding-top: 95px !important;
+}

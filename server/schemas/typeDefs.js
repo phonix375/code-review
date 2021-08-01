@@ -3,19 +3,29 @@ const { gql } = require('apollo-server-express');
 
 //create the typeDefs
 const typeDefs = gql`
-
-  type Comment {
+type User {
     _id: ID
-    comment_text: String!
-    username: String!
+    username: String
+    email: String
+    password: String
+    badges: [Skill]
+    rating: Float
+    balance: Float
+    numberOfRates: Int
+  }
+
+type Comment {
+    _id: ID
+    comment_text: String
+    username: String
     createdAt: String
   }
 
-  type Project {
+type Project {
     _id: ID
-    project_name: String!
-    username: String!
-    price: Int!
+    project_name: String
+    user_id: ID
+    price: Float
     deployed_link: String
     repository_link: String
     description: String
@@ -23,40 +33,32 @@ const typeDefs = gql`
     comments: [Comment]
   }
 
-type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    badges: [Skill]
-  }
+
 type Skill {
     _id: ID
     name: String
   }
-
   type Query {
     users: [User]
     user(username: String!): User
     skills:[Skill]
+    addSkillToUser: Skill
     getProjects: [Project]
     getProject(projectId: ID!): Project
   }
   
   type Mutation {
-    login(email: String!, password: String!): User
-    addUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     addSkill(name: String!): Skill
-    addProject(
-      project_name: String!,
-      username: String!,
-      price: Int!,
-      deployed_link: String,
-      repository_link: String,
-      description: String,
-      deadline: String
-    ): Project
-    addComment( projectId: ID!, comment_text: String!, username: String): Project
+    addSkillToUser(name: String! ): Skill
+    updateRating(username:String!, rating:Float): User
+    addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String) : Project
+    addComment(comment_text: String, username: String ) : Comment
+  }
+  type Auth {
+    token: ID!
+    user: User
   }
   `;
 

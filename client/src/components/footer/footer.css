@@ -1,0 +1,20 @@
+
+.footer {
+    
+    bottom: 0px !important;
+    margin-bottom: 0px !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+.container {
+
+}
+.icon {
+  height: 20px !important;
+}
+
+.links{
+  height: 20px;
+  width: 30px;
+}
