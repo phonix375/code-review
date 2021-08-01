@@ -12,7 +12,7 @@ function DonationPage() {
         <div className="donatebox">
             <h1>Please consider Donating to support further development of this website and its concepts. Thank you.</h1>
             
-            <a className="donationmodal" href="#"><SiBuymeacoffee size={55} color=" #c3e7ff" /> Buy Me A Coffee
+            <a className="donationmodal" href="https://www.buymeacoffee.com/nickhoban" target="_blank" ><SiBuymeacoffee size={55} color=" #c3e7ff" /> Buy Me A Coffee
             </a>
             
         </div>

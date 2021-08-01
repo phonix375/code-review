@@ -1,0 +1,17 @@
+.create-modal {
+    z-index: 10 !important;
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+ 
+}
+.modal-body {
+    border-radius: 5px;
+}
+
+.btn-close {
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: #003f54;
+}

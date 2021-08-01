@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { CREATE_NEW_PROJECT } from "../../utils/mutations";
 import { NEW_PROJECT_TAGGLE } from "../../utils/actions";
-
+import "./style.css";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../../utils/auth";
 import { Form } from "react-bootstrap";
@@ -91,7 +91,7 @@ function NewProjectModal() {
         };
 
         return (
-          <div className="modal-content">
+          <div className="modal-content create-modal">
             <div className="modal-header" style={{ background: "#c3e7ff" }}>
               <h4>Create new Project</h4>
               <button
