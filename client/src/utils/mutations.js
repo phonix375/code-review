@@ -61,4 +61,27 @@ mutation addProject(
     deadline
   }
 }
-`
+`;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($projectId: ID!, $comment_text: String!) {
+      addComment(
+        projectId: $projectId,
+        comment_text: $comment_text
+      ) {
+        _id
+        project_name
+        user_id
+        price
+        deployed_link
+        repository_link
+        description
+        deadline
+        comments {
+          _id
+          comment_text
+          username
+        }
+      }
+    }
+`;

@@ -57,7 +57,7 @@ type Skill {
     addSkillToUser(name: String! ): Skill
     updateRating(username:String!, rating:Float): User
     addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
-    addComment(comment_text: String, username: String ) : Comment
+    addComment(projectId: ID!, comment_text: String!) : Project
   }
   type Auth {
     token: ID!
