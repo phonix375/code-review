@@ -48,6 +48,10 @@ const projectSchema = new Schema(
     }
 );
 
+projectSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+})
+
 const Project = model('Project', projectSchema);
 
 module.exports = Project;
