@@ -68,7 +68,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
-            <Route exact path="/donations" component={DonatationPage} />
+            <Route exact path="/donations" component={DonationPage} />
             </Switch>
           
         </Container>

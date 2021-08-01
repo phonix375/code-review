@@ -1,14 +1,23 @@
 import React from 'react';
 import "./donation.css"
+import { FaBorderNone } from "react-icons/fa"
+import { SiBuymeacoffee } from "react-icons/si"
+import {VscSmiley} from "react-icons/vsc"
 
 
 
-function DonationPage(){
-    return(
-        <div>
-            <h1>please consider Donating to support further development of this website and its concepts</h1>
-            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nickhoban" data-color="#FFDD00" data-emoji=""  data-font="Lato" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+function DonationPage() {
+    return (
+        <div className="donatebox">
+            <h1>Please consider Donating to support further development of this website and its concepts. Thank you.</h1>
+            
+            <a className="donationmodal" href="#"><SiBuymeacoffee size={55} color=" #c3e7ff" /> Buy Me A Coffee
+            </a>
+            
         </div>
     )
 }
 export default DonationPage;
+
+
