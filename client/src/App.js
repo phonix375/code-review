@@ -14,10 +14,12 @@ import Home from "./pages/home"
 import ProjectPage from "./pages/project"
 import Personal from './pages/personal'
 import Footer from './components/footer/footer'
+import DonationPage from './pages/donate'
 
 
 
 import backgroundvid from "./assets/backgroundLoop.mp4";
+
 
 //react icons stuff
 //end of react icons tuff 
@@ -66,6 +68,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/personal" component={Personal} />
             <Route exact path="/project/:id" component={ProjectPage} />
+            <Route exact path="/donations" component={DonatationPage} />
             </Switch>
           
         </Container>
