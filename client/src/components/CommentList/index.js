@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 // add link to user's profile page
 
 const CommentList = ({ comments }) => {
-    console.log(`Comments`);
-    console.log(comments);
+    // console.log(`Comments`);
+    // console.log(comments);
     return (
         <div className="card mb-3">
             <div className="card-header">
