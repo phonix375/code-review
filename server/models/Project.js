@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
-const Skill = require('./Skill')
+const Skill = require('./Skill');
 
 const projectSchema = new Schema(
     {
@@ -13,6 +13,9 @@ const projectSchema = new Schema(
         user_id: {
             type: Schema.Types.ObjectId,
             required: true
+        },
+        username: {
+            type: String
         },
         price: {
             type: Number,
@@ -36,9 +39,17 @@ const projectSchema = new Schema(
         comments: {
             type: [commentSchema]
         },
-        skills:{
+        skills: {
             type: Schema.Types.ObjectId,
             ref: 'skills'
+        },
+        requests: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }],
+        accepted_user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         }
     },
     {
@@ -48,6 +59,10 @@ const projectSchema = new Schema(
         }
     }
 );
+
+projectSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+});
 
 const Project = model('Project', projectSchema);
 

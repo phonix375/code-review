@@ -33,6 +33,7 @@ type Skill {
     _id: ID
     project_name: String
     user_id: ID
+    username: String
     price: Float
     deployed_link: String
     repository_link: String
@@ -40,6 +41,9 @@ type Skill {
     deadline: String
     comments: [Comment]
     skills:[Skill]
+    commentCount: Int
+    requests: [User]
+    accepted_user: User
   }
   type Query {
     users: [User]
@@ -48,6 +52,7 @@ type Skill {
     addSkillToUser: Skill
     getProjects: [Project]
     getProject(projectId: ID!): Project
+    getProjectsByUser(user_id: ID!): [Project]
   }
   
   type Mutation {
@@ -58,6 +63,8 @@ type Skill {
     updateRating(username:String!, rating:Float): User
     addProject(project_name: String!, user_id: String!, price: Float!,deployed_link: String,repository_link: String, description: String, deadline: String, skills: [ID]) : Project
     addComment(projectId: ID!, comment_text: String!) : Project
+    projectRequest(projectId: ID!, user_id: String!): Project
+    acceptProjectRequest(projectId: ID!, user_id: ID!): Project
   }
   type Auth {
     token: ID!

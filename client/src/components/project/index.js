@@ -5,12 +5,14 @@ import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PROJECTS } from "../../utils/queries";
 import { useStoreContext } from "../../utils/GlobalState";
+import { useMutation } from '@apollo/react-hooks';
 import {
   UPDATE_PROJECTS
 } from "../../utils/actions";
 import Auth from '../../utils/auth';
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";
+import { PROJECT_REQUEST } from '../../utils/mutations';
 
 function Project() {
   const [state, dispatch] = useStoreContext();
@@ -21,6 +23,10 @@ function Project() {
   const { loading, data } = useQuery(QUERY_PROJECTS);
 
   const { projects } = state;
+
+  const [projectRequest, { error }] = useMutation(PROJECT_REQUEST);
+
+  const userProfile = Auth.loggedIn() ? Auth.getProfile() : '';
 
 
   useEffect(() => {
@@ -43,6 +49,23 @@ function Project() {
   }, [projects, data, dispatch, id]);
 
 
+  // use mutation to request access to the project
+  const requestButtonHandler = async event => {
+    event.preventDefault();
+
+    const user_id = userProfile.data._id;
+    const projectId = id;
+
+    // console.log('requested by ' + userProfile.data.username);
+    try {
+      await projectRequest({
+        variables: { projectId, user_id }
+      })
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
 
   console.log(state)
   return (
@@ -52,6 +75,9 @@ function Project() {
         background: "rgb(0,63,84)",
         color: "rgb(255, 255, 255)"
       }}>
+        {Auth.loggedIn() && currentProject.user_id !== userProfile.data._id ? (
+          <button onClick={requestButtonHandler}>Request</button>
+        ) : (<></>)}
         <h1>{currentProject.project_name}</h1>
         <p>{currentProject.description}</p>
         <p>${currentProject.price}</p>
@@ -60,7 +86,7 @@ function Project() {
         <CommentList comments={currentProject.comments} />
       )}
 
-      {Auth.loggedIn() && <CommentForm projectId={currentProject._id} />}
+      {Auth.loggedIn() && <CommentForm projectId={id} />}
     </Container>
   )
 }
