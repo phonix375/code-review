@@ -53,7 +53,7 @@ function RegisterModal() {
                     <div className="modal-body" style={{ background: "#edf6ff" }}>
                         <form className="mt-4" onSubmit={handleFormSubmit}>
                         <Form.Group className="form-group mb-3">
-                            <Form.Label>Password address</Form.Label>
+                            <Form.Label>Username</Form.Label>
                             <Form.Control className="form-control" 
                                                 type="username"
                                                 placeholder="Username" 
@@ -71,7 +71,7 @@ function RegisterModal() {
                                                 onChange={handelChange}/>
                             </Form.Group>
                             <Form.Group className="form-group mb-3">
-                            <Form.Label>Password address</Form.Label>
+                            <Form.Label>Password </Form.Label>
                             <Form.Control className="form-control" 
                                                 type="password"
                                                 placeholder="Password" 
