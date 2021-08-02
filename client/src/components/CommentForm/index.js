@@ -26,6 +26,9 @@ const CommentForm = ({ projectId }) => {
             console.error(e);
         }
     }
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     return (
         <div>
@@ -37,7 +40,7 @@ const CommentForm = ({ projectId }) => {
                     onChange={handleChange}
                 ></textarea>
 
-                <button className="commentBtn" type="submit">Submit</button>
+                <button onClick={refreshPage} className="commentBtn" type="submit">Submit</button>
             </form>
         </div>
     )
