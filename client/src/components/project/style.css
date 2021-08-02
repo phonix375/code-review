@@ -1,0 +1,20 @@
+.requestform {
+    font-size: 20px;
+    border-radius: 5px;
+    background-color:  #c3e7ff;
+    color: #003f54;
+}
+
+.projectTitle {
+    
+}
+
+.projectDescription{
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.projectPrice{
+    padding-left: 10px;
+    font-size: 20px;
+}

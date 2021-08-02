@@ -13,6 +13,7 @@ import Auth from '../../utils/auth';
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";
 import { PROJECT_REQUEST } from '../../utils/mutations';
+import "./style.css"
 
 function Project() {
   const [state, dispatch] = useStoreContext();
@@ -76,11 +77,11 @@ function Project() {
         color: "rgb(255, 255, 255)"
       }}>
         {Auth.loggedIn() && currentProject.user_id !== userProfile.data._id ? (
-          <button onClick={requestButtonHandler}>Request</button>
+          <button className="requestform" onClick={requestButtonHandler}>Request</button>
         ) : (<></>)}
-        <h1>{currentProject.project_name}</h1>
-        <p>{currentProject.description}</p>
-        <p>${currentProject.price}</p>
+        <h1 className="projectTitle">{currentProject.project_name}</h1>
+        <p className="projectDescription">{currentProject.description}</p>
+        <p className="projectPrice">${currentProject.price}</p>
       </section>
       {currentProject.commentCount > 0 && (
         <CommentList comments={currentProject.comments} />
