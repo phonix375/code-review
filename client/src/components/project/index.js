@@ -33,8 +33,8 @@ function Project() {
     // already in global store
     if (projects.length) {
       setCurrentProject(projects.find(project => project._id === id));
-      console.log('this is the currect project');
-      console.log(currentProject)
+      // console.log('this is the currect project');
+      // console.log(currentProject)
     }
     // retrieved from server
     else if (data) {
@@ -43,8 +43,8 @@ function Project() {
         projects: data.getProjects
       });
       setCurrentProject(data.getProjects.find(project => project._id === id));
-      console.log('this is the currect project');
-      console.log(currentProject)
+      // console.log('this is the currect project');
+      // console.log(currentProject)
     };
   }, [projects, data, dispatch, id]);
 
@@ -67,7 +67,7 @@ function Project() {
     }
   }
 
-  console.log(state)
+  // console.log(state)
   return (
     <Container >
       <section className="features-blue" style={{

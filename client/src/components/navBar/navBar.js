@@ -15,7 +15,7 @@ import NewProjectModal from '../createProject'
 function Navigation() {
     const [state, dispatch] = useStoreContext();
     const { data: skills } = useQuery(QUERY_SKILLS)
-    console.log(state);
+    // console.log(state);
 
     useEffect(() => {
         if (skills) {
@@ -24,8 +24,8 @@ function Navigation() {
                 type: UPDATE_SKILL_LIST,
                 skills: skills.skills
             })
-            console.log('this is a skill list:')
-            console.log(skills.skills)
+            // console.log('this is a skill list:')
+            // console.log(skills.skills)
         }
     }, [dispatch, skills])
 

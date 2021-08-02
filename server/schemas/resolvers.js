@@ -30,7 +30,7 @@ const resolvers = {
       return project;
     },
     getProjectsByUser: async (parent, args) => {
-      console.log(args);
+      // console.log(args);
       const projects = await Project.find({ user_id: args.user_id }).select('-__v').populate('comments').populate('requests').populate('accepted_user');
 
       return projects;
@@ -86,7 +86,7 @@ const resolvers = {
       return updatedUser;
     },
     addProject: async (parent, args, context) => {
-      console.log(args);
+      // console.log(args);
       const project = await Project.create(args);
 
       return project;
