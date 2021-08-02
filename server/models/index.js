@@ -1,5 +1,5 @@
 // import models
-const User = require('./Users');
+const User = require('./users');
 const Skill = require('./Skill');
 const Project = require('./Project');
 const Chat = require('./Chat');
